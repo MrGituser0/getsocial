@@ -1,14 +1,22 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route } from "react-router-dom";
+import "./index.css";
+import Default from "./pages/Default";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+import Home from "./pages/Home";
+import ProtectedRoute from "./routes/ProtectedRoute";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-   <h1>Here is my social media app : - Get Social</h1>
-  )
+    <Routes>
+      <Route path="/" element={<Default />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route element={<ProtectedRoute />}>
+        <Route path="/home" element={<Home />} />
+      </Route>
+    </Routes>
+  );
 }
 
-export default App
+export default App;
